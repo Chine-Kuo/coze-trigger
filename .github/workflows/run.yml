@@ -1,0 +1,16 @@
+name: 每日定时运行扣子项目
+on:
+  schedule:
+    - cron: "0 21 * * *"  # 北京时间 每天 5:00 运行
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5  # 最多等待5分钟，解决超时问题
+    steps:
+      - name: 调用扣子API
+        run: |
+          curl -X POST "https://8jtx4z5h26.coze.site/run" \
+            -H "Authorization: Bearer sat_7jE4hmQhKefATAPZZyCDjBs1KdiSYeoBPpi5dNpUfdEh1ZA4RI3Fbv2aj16W2qcl" \
+            -H "Content-Type: application/json" \
+            -d "{}"
