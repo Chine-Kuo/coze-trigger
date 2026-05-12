@@ -1,12 +1,13 @@
 name: 每日定时运行扣子项目
 on:
   schedule:
-    - cron: "50 9 * * *"  # 北京时间 每天 5:00 运行 
+    - cron: "00 10 * * *"  # 北京时间 17:50 运行
+  workflow_dispatch:  # 这行就是手动触发的开关
 
 jobs:
   run:
     runs-on: ubuntu-latest
-    timeout-minutes: 5  # 最多等待5分钟，解决超时问题
+    timeout-minutes: 5
     steps:
       - name: 调用扣子API
         run: |
